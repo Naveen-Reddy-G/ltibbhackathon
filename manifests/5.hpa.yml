@@ -1,6 +1,6 @@
 ---
 apiVersion: autoscaling/v2
-kind: HorizontalPodAutoScaler
+kind: HorizontalPodAutoscaler
 metadata:
   name: hpa
 spec:
@@ -8,12 +8,14 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: nginx-deployment
+
   minReplicas: 3
-  maxReplics: 10
+  maxReplicas: 10
+
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
-          type: Utilisation
-          averageUtilisation: 60
+          type: Utilization
+          averageUtilization: 60
